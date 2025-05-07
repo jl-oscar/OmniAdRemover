@@ -6,20 +6,22 @@ function removeAds() {
     .querySelectorAll('[data-testid="stickyside-component"]')
     .forEach((el) => el.remove());
 
-  const classNamesToRemove = [
-    "Ad_placement__QjKHs",
-    "Ad_articleResource__4MgjU",
-    "StickySideAd_wideScreenAdAnchor__nwcyQ",
-    "StickySideAd_widescreenAd__AQRun",
+  const partialClassNames = [
+    "Ad_placement",
+    "Ad_articleResource",
+    "StickySideAd_wideScreenAdAnchor",
+    "StickySideAd_widescreenAd",
+    "DesktopFeedPanoramaAd_adContainer",
+    "DesktopFeedPanoramaAd_adContent"
   ];
 
-  classNamesToRemove.forEach((className) => {
-    document.querySelectorAll(`.${className}`).forEach((el) => el.remove());
+  partialClassNames.forEach((partialName) => {
+    document.querySelectorAll(`[class*="${partialName}"]`).forEach((el) => el.remove());
   });
 
   // Hidden adds shown as "News article"
   document
-    .querySelectorAll(".TeaserCluster_clusterContainer__o70EC")
+    .querySelectorAll('[class*="TeaserCluster_clusterContainer"]')
     .forEach((cluster) => {
       const containsAdMarker = cluster.textContent.includes("ANNONS");
       if (containsAdMarker) {
