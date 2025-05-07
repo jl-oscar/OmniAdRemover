@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "Omni Ad Blocker",
+  "version": "1.0",
+  "description": "Removes ads from the Omni website",
+  "permissions": ["scripting"],
+  "content_scripts": [
+    {
+      "matches": ["*://*.omni.se/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
